@@ -48,6 +48,12 @@ class Task{
   save(fn){
     taskCollection.save(this, ()=>fn());
   }
+
+  edit(obj){
+    this.title = obj.title;
+    this.due = new Date(obj.due);
+    this.color = obj.color;
+  }
 }
 
 module.exports = Task;

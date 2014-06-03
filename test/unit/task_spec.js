@@ -135,6 +135,17 @@ describe('Task', function(){
     });
   });
 
+  describe('#edit', function(){
+    it('should edit a task', function(){
+      Task.findById(task1._id.toString(), function(t){
+        t.edit({title: 'red', due: '2/23/2015', color: 'blue'});
+        expect(t.title).to.equal('red');
+        expect(moment(t.due).format('MM/DD/YYYY')).to.equal('02/23/2015');
+        expect(t.color).to.equal('blue');
+      });
+    });
+  });
+
   describe('#toggle', function(){
     it('should toggle a task', function(){
       task1.toggle();
@@ -153,5 +164,4 @@ describe('Task', function(){
       });
     });
   });
-
 });
